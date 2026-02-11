@@ -66,10 +66,10 @@ EOT
   type = map(object({
     name                                                       = string
     server_id                                                  = string
-    transparent_data_encryption_key_automatic_rotation_enabled = optional(bool, false)
-    transparent_data_encryption_enabled                        = optional(bool, true)
+    transparent_data_encryption_key_automatic_rotation_enabled = optional(bool) # Default: false
+    transparent_data_encryption_enabled                        = optional(bool) # Default: true
     tags                                                       = optional(map(string))
-    storage_account_type                                       = optional(string, "Geo")
+    storage_account_type                                       = optional(string) # Default: "Geo"
     sku_name                                                   = optional(string)
     secondary_type                                             = optional(string)
     sample_name                                                = optional(string)
@@ -85,11 +85,11 @@ EOT
     maintenance_configuration_name                             = optional(string)
     license_type                                               = optional(string)
     ledger_enabled                                             = optional(bool)
-    geo_backup_enabled                                         = optional(bool, true)
+    geo_backup_enabled                                         = optional(bool) # Default: true
     enclave_type                                               = optional(string)
     elastic_pool_id                                            = optional(string)
     creation_source_database_id                                = optional(string)
-    create_mode                                                = optional(string, "Default")
+    create_mode                                                = optional(string) # Default: "Default"
     collation                                                  = optional(string)
     auto_pause_delay_in_minutes                                = optional(number)
     transparent_data_encryption_key_vault_key_id               = optional(string)
@@ -108,7 +108,7 @@ EOT
       storage_uri                  = string
     }))
     long_term_retention_policy = optional(object({
-      immutable_backups_enabled = optional(bool, false)
+      immutable_backups_enabled = optional(bool) # Default: false
       monthly_retention         = optional(string)
       week_of_year              = optional(number)
       weekly_retention          = optional(string)
@@ -120,10 +120,10 @@ EOT
     }))
     threat_detection_policy = optional(object({
       disabled_alerts            = optional(set(string))
-      email_account_admins       = optional(string, "Disabled")
+      email_account_admins       = optional(string) # Default: "Disabled"
       email_addresses            = optional(set(string))
       retention_days             = optional(number)
-      state                      = optional(string, "Disabled")
+      state                      = optional(string) # Default: "Disabled"
       storage_account_access_key = optional(string)
       storage_endpoint           = optional(string)
     }))
