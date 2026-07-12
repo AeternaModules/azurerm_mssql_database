@@ -1,3 +1,7 @@
+output "mssql_databases_id" {
+  description = "Map of id values across all mssql_databases, keyed the same as var.mssql_databases"
+  value       = { for k, v in azurerm_mssql_database.mssql_databases : k => v.id }
+}
 output "mssql_databases_auto_pause_delay_in_minutes" {
   description = "Map of auto_pause_delay_in_minutes values across all mssql_databases, keyed the same as var.mssql_databases"
   value       = { for k, v in azurerm_mssql_database.mssql_databases : k => v.auto_pause_delay_in_minutes }
