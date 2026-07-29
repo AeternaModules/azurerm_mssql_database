@@ -45,7 +45,6 @@ Optional:
         - storage_key_type (required)
         - storage_uri (required)
     - long_term_retention_policy (block):
-        - immutable_backups_enabled (optional)
         - monthly_retention (optional)
         - week_of_year (optional)
         - weekly_retention (optional)
@@ -55,7 +54,7 @@ Optional:
         - retention_days (required)
     - threat_detection_policy (block):
         - disabled_alerts (optional)
-        - email_account_admins (optional)
+        - email_account_admins_enabled (optional)
         - email_addresses (optional)
         - retention_days (optional)
         - state (optional)
@@ -108,24 +107,23 @@ EOT
       storage_uri                  = string
     }))
     long_term_retention_policy = optional(object({
-      immutable_backups_enabled = optional(bool)
-      monthly_retention         = optional(string)
-      week_of_year              = optional(number)
-      weekly_retention          = optional(string)
-      yearly_retention          = optional(string)
+      monthly_retention = optional(string)
+      week_of_year      = optional(number)
+      weekly_retention  = optional(string)
+      yearly_retention  = optional(string)
     }))
     short_term_retention_policy = optional(object({
       backup_interval_in_hours = optional(number)
       retention_days           = number
     }))
     threat_detection_policy = optional(object({
-      disabled_alerts            = optional(set(string))
-      email_account_admins       = optional(string)
-      email_addresses            = optional(set(string))
-      retention_days             = optional(number)
-      state                      = optional(string)
-      storage_account_access_key = optional(string)
-      storage_endpoint           = optional(string)
+      disabled_alerts              = optional(set(string))
+      email_account_admins_enabled = optional(bool)
+      email_addresses              = optional(set(string))
+      retention_days               = optional(number)
+      state                        = optional(string)
+      storage_account_access_key   = optional(string)
+      storage_endpoint             = optional(string)
     }))
   }))
 }

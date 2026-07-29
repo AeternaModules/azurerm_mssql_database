@@ -56,11 +56,10 @@ resource "azurerm_mssql_database" "mssql_databases" {
   dynamic "long_term_retention_policy" {
     for_each = each.value.long_term_retention_policy != null ? [each.value.long_term_retention_policy] : []
     content {
-      immutable_backups_enabled = long_term_retention_policy.value.immutable_backups_enabled
-      monthly_retention         = long_term_retention_policy.value.monthly_retention
-      week_of_year              = long_term_retention_policy.value.week_of_year
-      weekly_retention          = long_term_retention_policy.value.weekly_retention
-      yearly_retention          = long_term_retention_policy.value.yearly_retention
+      monthly_retention = long_term_retention_policy.value.monthly_retention
+      week_of_year      = long_term_retention_policy.value.week_of_year
+      weekly_retention  = long_term_retention_policy.value.weekly_retention
+      yearly_retention  = long_term_retention_policy.value.yearly_retention
     }
   }
 
@@ -75,13 +74,13 @@ resource "azurerm_mssql_database" "mssql_databases" {
   dynamic "threat_detection_policy" {
     for_each = each.value.threat_detection_policy != null ? [each.value.threat_detection_policy] : []
     content {
-      disabled_alerts            = threat_detection_policy.value.disabled_alerts
-      email_account_admins       = threat_detection_policy.value.email_account_admins
-      email_addresses            = threat_detection_policy.value.email_addresses
-      retention_days             = threat_detection_policy.value.retention_days
-      state                      = threat_detection_policy.value.state
-      storage_account_access_key = threat_detection_policy.value.storage_account_access_key
-      storage_endpoint           = threat_detection_policy.value.storage_endpoint
+      disabled_alerts              = threat_detection_policy.value.disabled_alerts
+      email_account_admins_enabled = threat_detection_policy.value.email_account_admins_enabled
+      email_addresses              = threat_detection_policy.value.email_addresses
+      retention_days               = threat_detection_policy.value.retention_days
+      state                        = threat_detection_policy.value.state
+      storage_account_access_key   = threat_detection_policy.value.storage_account_access_key
+      storage_endpoint             = threat_detection_policy.value.storage_endpoint
     }
   }
 }
