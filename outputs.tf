@@ -32,11 +32,11 @@ output "mssql_databases_geo_backup_enabled" {
 }
 output "mssql_databases_identity" {
   description = "Map of identity values across all mssql_databases, keyed the same as var.mssql_databases"
-  value       = { for k, v in azurerm_mssql_database.mssql_databases : k => v.identity if v.identity != null && length(v.identity) > 0 }
+  value       = { for k, v in azurerm_mssql_database.mssql_databases : k => one(v.identity) if v.identity != null && length(v.identity) > 0 }
 }
 output "mssql_databases_import" {
   description = "Map of import values across all mssql_databases, keyed the same as var.mssql_databases"
-  value       = { for k, v in azurerm_mssql_database.mssql_databases : k => v.import if v.import != null && length(v.import) > 0 }
+  value       = { for k, v in azurerm_mssql_database.mssql_databases : k => one(v.import) if v.import != null && length(v.import) > 0 }
   sensitive   = true
 }
 output "mssql_databases_ledger_enabled" {
@@ -49,7 +49,7 @@ output "mssql_databases_license_type" {
 }
 output "mssql_databases_long_term_retention_policy" {
   description = "Map of long_term_retention_policy values across all mssql_databases, keyed the same as var.mssql_databases"
-  value       = { for k, v in azurerm_mssql_database.mssql_databases : k => v.long_term_retention_policy if v.long_term_retention_policy != null && length(v.long_term_retention_policy) > 0 }
+  value       = { for k, v in azurerm_mssql_database.mssql_databases : k => one(v.long_term_retention_policy) if v.long_term_retention_policy != null && length(v.long_term_retention_policy) > 0 }
 }
 output "mssql_databases_maintenance_configuration_name" {
   description = "Map of maintenance_configuration_name values across all mssql_databases, keyed the same as var.mssql_databases"
@@ -109,7 +109,7 @@ output "mssql_databases_server_id" {
 }
 output "mssql_databases_short_term_retention_policy" {
   description = "Map of short_term_retention_policy values across all mssql_databases, keyed the same as var.mssql_databases"
-  value       = { for k, v in azurerm_mssql_database.mssql_databases : k => v.short_term_retention_policy if v.short_term_retention_policy != null && length(v.short_term_retention_policy) > 0 }
+  value       = { for k, v in azurerm_mssql_database.mssql_databases : k => one(v.short_term_retention_policy) if v.short_term_retention_policy != null && length(v.short_term_retention_policy) > 0 }
 }
 output "mssql_databases_sku_name" {
   description = "Map of sku_name values across all mssql_databases, keyed the same as var.mssql_databases"
@@ -125,7 +125,7 @@ output "mssql_databases_tags" {
 }
 output "mssql_databases_threat_detection_policy" {
   description = "Map of threat_detection_policy values across all mssql_databases, keyed the same as var.mssql_databases"
-  value       = { for k, v in azurerm_mssql_database.mssql_databases : k => v.threat_detection_policy if v.threat_detection_policy != null && length(v.threat_detection_policy) > 0 }
+  value       = { for k, v in azurerm_mssql_database.mssql_databases : k => one(v.threat_detection_policy) if v.threat_detection_policy != null && length(v.threat_detection_policy) > 0 }
   sensitive   = true
 }
 output "mssql_databases_transparent_data_encryption_enabled" {
